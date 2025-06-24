@@ -25,6 +25,7 @@ Below is a summary of the main input parameters.
   --seed SEED           Seed used for subsampling.
   --output OUTPUT       Output directory.
   --overwrite           Overwrite output directory.
+  --append              Append results into pre-existing directories (if running >1)
   --getorganelle        Format seed and gene database for get organelle.
   --email EMAIL         Email for Entrez.
   --api API             API key for NCBI. Optional.
@@ -32,17 +33,18 @@ Below is a summary of the main input parameters.
 
 ### How it works
 
-The user provides a taxonomy as a taxonomic name (e.g. "Arabidopsis thaliana") or NCBI taxonomy ID (e.g. "3702"). However, **it is reccomended to use NCBI taxonomy IDs**, as some unrelated groups share names, for example the name "Drosophila" is used for both a genus of fruit flies and basidiomycete fungi. 
+The user provides a taxonomy as a taxonomic name (e.g. "Arabidopsis thaliana") or NCBI taxonomy ID (e.g. "3702"). However, **it is recommended to use NCBI taxonomy IDs**, as some unrelated groups share names, for example the name "Drosophila" is used for both a genus of fruit flies and basidiomycete fungi.
 
-The script will count the number or target sequences available for the user given taxonomy. If there are not enough sequence available based on the `--min` parameter, the script will count the number of sequences available for the parent rank, until the minimum threshold is reached. 
+The script will count the number or target sequences available for the user given taxonomy. If there are not enough sequence available based on the `--min` parameter, the script will count the number of sequences available for the parent rank, until the minimum threshold is reached.
 
-If the maximum number of sequences is exceeded, based on the `--max` parameter, the script will subsample the children lineages, aiming for an even sampling across children. 
+If the maximum number of sequences is exceeded, based on the `--max` parameter, the script will subsample the children lineages, aiming for an even sampling across children.
 
-Note that the `--target` option `ribosomal` will search for sequences with any of the ribosomal annotations (28S/25S, 18S, 5.8S), whereas `ribosomal_complete` will try to find sequences with all annotations. 
+Note that the `--target` option `ribosomal` will search for sequences with any of the ribosomal annotations (28S/25S, 18S, 5.8S), whereas `ribosomal_complete` will try to find sequences with all annotations.
 
 ### Example usage
 
-Below are simple examples of how to use the script. 
+Below are simple examples of how to use the script.
+
 ```
 # Arabidopsis thaliana chloroplast
 ./go_fetch.py \
