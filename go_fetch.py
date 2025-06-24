@@ -216,7 +216,7 @@ def print_phylogeny(main_lineage, optional_children = []):
             spacer = "|_" + spacer
         else:
             spacer = "  " + spacer
-    if optional_children is not []:
+    if optional_children != []:
         for c in optional_children:
             print(f"{spacer}{c}")
 
